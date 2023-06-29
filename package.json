@@ -1,0 +1,18 @@
+{
+  "name": "template-algo",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest",
+    "test:ui": "vitest --ui"
+  },
+  "devDependencies": {
+    "@vitest/ui": "^0.32.2",
+    "vite": "^4.3.9",
+    "vitest": "^0.32.2"
+  }
+}

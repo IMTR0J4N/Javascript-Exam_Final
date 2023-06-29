@@ -139,3 +139,183 @@ const exo8 = (str) => {
 }
 
 log(exo8('test'), exo8('algo')) // false, true
+
+log('EXO 9 :')
+// Implémentez une fonction qui retourne le deuxieme plus grand élément d'un tableau de nombre entier.
+const exo9 = (arr) => {
+
+  if (!Array.isArray(arr)) {
+    return console.error('invalid argument type')
+  }
+
+  let higher = exo6(arr) // recupérer l'élément le plus grand du tableau
+  let secondHigher = 0;
+
+  for (const n of arr) {
+    if (n > secondHigher && n <= higher) {
+      secondHigher = n
+    }
+  }
+
+  return secondHigher
+}
+
+log(exo9([2, 4, 5, 7, 4, 7]), exo9([1, 9, 5, 34, 7]))
+
+log('EXO 10 :')
+// Écrivez une fonction pour calculer la somme de tous les nombres pairs d'un tableau.
+const exo10 = (arr) => {
+  if (!Array.isArray(arr)) {
+    return console.error('invalid argument type')
+  }
+
+  const oddNumber = [];
+  let res = 0;
+
+  for (const n of arr) {
+    if (typeof n !== "number") {
+      return console.error('invalid array value type')
+    } else if (n % 2 === 0 && n !== 0) {
+      oddNumber.push(n)
+    }
+  }
+
+  oddNumber.forEach(n => {
+    res += n
+  })
+
+  return res
+}
+
+log(exo10([15, 12, 2, 4, 5, 7]), exo10([10, 3, 6, 4, 0])) // 18, 20
+
+log("EXO 11 :")
+// Créez une fonction pour inverser l'ordre des mots dans une phrase.
+// Vous pouvez utliser les méthode disponible dans les prototypes String et Array
+const exo11 = (str) => {
+  const splitStrArr = str.split(" ");
+
+  splitStrArr.reverse();
+  
+  return splitStrArr.join(" ")
+}
+
+log(exo11("Examen de fin d'année"), exo11('Je code des algos')) // d'année fin de Examen, algos des code Je
+
+log('EXO 12 :')
+// Implémentez une fonction pour supprimer toutes les occurrences d'un élément donné d'un tableau.
+const exo12 = (arr) => {
+  if (!Array.isArray(arr)) {
+    return console.error('invalid argument type')
+  }
+
+  const res = [];
+
+  arr.filter(i => {
+    if (!res.includes(i)) {
+      res.push(i)
+    }
+  })
+
+  return res
+}
+
+log(exo12([1, 3, 3, 5]), exo12([5, 6, 3, 7, 4, 5, 2])); // [ 1, 3, 5], [ 5, 6, 3, 7, 4, 2 ]
+
+log('EXO 13 :')
+// Écrivez un algorithme pour trouver le nombre de voyelles dans une chaîne de caractères.
+const exo13 = (str) => {
+  const voyelles = ['a', 'e', 'i', 'o', 'u', 'y'];
+  let res = 0;
+
+  if (typeof str !== "string") {
+    return console.error('invalid argument type')
+  }
+
+  for (const l of str) {
+    if (voyelles.includes(l)) {
+      res++;
+    }
+  }
+
+  return res
+}
+
+log(exo13('Bonjour'), exo13('developpeur')) // 3, 5
+
+log('EXO 14 :')
+// Implémentez une fonction qui permet de trouver le plus petit nombre
+// d'un tableau à 2 dimensions passé en argument
+const exo14 = (arrays) => {
+  if (!Array.isArray(arrays)) {
+    return console.error('invalid argument type')
+  }
+
+  let plusPetit;
+
+  for (const arr of arrays) {
+    if (!Array.isArray(arr)) {
+      return console.error('invalid array value type')
+    }
+
+    for (const n of arr) {
+      if(typeof n !== "number") {
+        return console.error('invalid sub-array value type')
+      }
+
+      if (!plusPetit) {
+        plusPetit = n
+      }
+
+      if (n < plusPetit) {
+        plusPetit = n
+      }
+
+    }
+  }
+
+  return plusPetit
+}
+
+log(exo14([[10, 3, 2, 4, 6], [15, 35, 1, 6, 4]]), exo14([[134, 35, 46, 35, 6, 6], [356, 46, 35, 6]])) // 1, 6
+
+log("EXO 15 :")
+// Implémentez une fonction pour rechercher tous les index d'un nombre donné (premier argument)
+// dans un tableau de nombre entier (deuxieme argument).
+const exo15 = (number, arr) => {
+  if (typeof number !== 'number' && !Array.isArray(arr)) {
+    return console.error('invalid argument type')
+  }
+
+  const res = [];
+
+  for (const i in arr) {
+    if (typeof arr[i] !== typeof number) {
+      return console.error('invalid array value type')
+    }
+    if (arr[i] === number) {
+      res.push(i)
+    }
+  }
+
+  return res
+}
+
+log(exo15(3, [3, 5, 7, 3, 5, 2]), exo15(1, [1, 6, 1, 3, 5, 1])) // [ '0', '3' ], [ '0', '2', '5' ]
+
+log('EXO 16 :')
+// Implémentez une fonction pour calculer le nombre de chiffres d'un nombre entier.
+const exo16 = (numbers) => {
+
+  if (typeof numbers !== 'number') {
+    return console.error('invalid argument type')
+  }
+
+  let res = 0;
+
+  numbers.toString().split('').forEach(i => res++)
+
+  return res
+}
+
+log(exo16(1040502), exo16(2505259295))
